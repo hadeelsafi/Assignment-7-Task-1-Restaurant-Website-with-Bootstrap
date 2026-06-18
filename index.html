@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al-Abdsawi Pizza</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    /* لوحة الألوان الدافئة والمتناسقة الخاصة بمطعم العبدساوي */
+    :root {
+      --warm-red: #b85042;
+      --cheese-yellow: #fcebb6;
+      --cozy-beige: #f9f6f0;
+      --dark-wood: #3e2723;
+    }
+
+    body {
+      background-color: var(--cozy-beige);
+      color: var(--dark-wood);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* تنسيق الهيدر (Navbar) الثابت ومنع الشفافية والتداخل */
+    .navbar {
+      position: sticky !important;
+      top: 0;
+      width: 100%;
+      background-color: var(--warm-red) !important;
+      opacity: 1 !important;
+      backdrop-filter: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important; /* ظل يفصل الهيدر عن الكاروسيل */
+      z-index: 9999 !important; /* يضمن ظهور الهيدر فوق الصور دائمًا */
+      padding: 15px 0;
+    }
+
+    .bg-warm-red {
+      background-color: var(--warm-red) !important;
+    }
+
+    .text-warm-red {
+      color: var(--warm-red) !important;
+    }
+
+    .bg-cheese {
+      background-color: var(--cheese-yellow) !important;
+    }
+
+    /* تنسيق أزرار الطلب */
+    .btn-pizza {
+      background-color: var(--warm-red);
+      color: white;
+      border: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-pizza:hover {
+      background-color: var(--dark-wood);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* ضبط حجم عارض الصور (Carousel) */
+    .carousel-item img {
+      height: 60vh;
+      object-fit: cover;
+    }
+
+    /* تنسيق بطاقات البيتزا الأفقية لراحة العين ومنع انضغاط النصوص */
+    .pizza-card-custom {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      background-color: #ffffff;
+    }
+
+    .pizza-card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(62, 39, 35, 0.15) !important;
+    }
+
+    /* حاوية الصورة لضمان ملاءمتها هندسيًا دون تشويه */
+    .pizza-card-custom .img-container {
+      overflow: hidden;
+      position: relative;
+      min-height: 220px;
+    }
+
+    .pizza-card-custom .img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .card-title {
+      color: var(--dark-wood);
+      margin-bottom: 12px;
+    }
+
+    .card-text {
+      font-size: 14.5px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* شاشات الجوال والأجهزة اللوحية */
+    @media (max-width: 767px) {
+      .pizza-card-custom .img-container {
+        height: 200px;
+        min-height: 200px;
+      }
+      .pizza-card-custom .img-container img {
+        position: relative;
+      }
+      .carousel-item img {
+        height: 35vh;
+      }
+    }
+    @media (max-width: 992px) {
+      .carousel-item img {
+        height: 45vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-warm-red sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3" href="#"><i class="fas fa-pizza-slice me-2 text-warning"></i>Al-Abdsawi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto fw-semibold">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Our Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="heroCarousel" class="carousel slide carousel-fade shadow" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1200" class="d-block w-100" alt="Fresh Pizza">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-4">
+          <h1 class="display-4 fw-bold">Authentic Wood-Fired Pizza</h1>
+          <p class="fs-5">Baked to absolute perfection with premium traditional ingredients and elite craftsmanship.</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=1200" class="d-block w-100" alt="Cheese Pull">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-4">
+          <h1 class="display-4 fw-bold">The Ultimate Cheese Pull</h1>
+          <p class="fs-5">Experiencing the richest blends of fresh, locally sourced Italian mozzarella layers.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <section id="home" class="container text-center my-5 py-4">
+    <h2 class="display-5 fw-bold text-warm-red mb-3">Welcome to Al-Abdsawi Pizza</h2>
+  </section>
+
+  <section id="menu" class="bg-cheese py-5 shadow-sm">
+    <div class="container">
+      <h2 class="text-center fw-bold text-warm-red mb-5">Explore Our Legendary Menu</h2>
+      <div class="row g-4">
+        
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden pizza-card-custom h-100">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 img-container">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=400" alt="Chicken Pizza">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body d-flex flex-column justify-content-between h-100 p-4">
+                  <div>
+                    <h4 class="card-title fw-bold text-start">BBQ Chicken Alfredo</h4>
+                    <p class="card-text text-muted">Tender grilled chicken breast pieces, rich white Alfredo cream base, layered with fresh mushrooms and a swirl of smoky sweet BBQ sauce.</p>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="fs-4 fw-bold text-warm-red">$15</span>
+                    <button class="btn btn-pizza px-4 rounded-pill"><i class="fas fa-shopping-basket me-2"></i>Order Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden pizza-card-custom h-100">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 img-container">
+                <img src="https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=400" alt="Cheese Pizza">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body d-flex flex-column justify-content-between h-100 p-4">
+                  <div>
+                    <h4 class="card-title fw-bold text-start">Four Cheese Supreme</h4>
+                    <p class="card-text text-muted">An elite, bubbling combination of authentic melted Mozzarella, rich Parmesan, sharp Gorgonzola, and creamy Fontina cheeses with Italian herbs.</p>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="fs-4 fw-bold text-warm-red">$13</span>
+                    <button class="btn btn-pizza px-4 rounded-pill"><i class="fas fa-shopping-basket me-2"></i>Order Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden pizza-card-custom h-100">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 img-container">
+                <img src="https://www.kitchentreaty.com/wp-content/uploads/2015/06/vegan-summer-pizza-with-sweet-corn-tomatoes-and-basil-700x980.jpg" alt="Vegetarian Pizza">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body d-flex flex-column justify-content-between h-100 p-4">
+                  <div>
+                    <h4 class="card-title fw-bold text-start">Garden Veggie Feast</h4>
+                    <p class="card-text text-muted">A crisp assortment of fresh bell peppers, sliced black olives, sweet corn, tender mushrooms, and juicy local cherry tomatoes.</p>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="fs-4 fw-bold text-warm-red">$12</span>
+                    <button class="btn btn-pizza px-4 rounded-pill"><i class="fas fa-shopping-basket me-2"></i>Order Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden pizza-card-custom h-100">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 img-container">
+                <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=400" alt="Sausage Pizza">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body d-flex flex-column justify-content-between h-100 p-4">
+                  <div>
+                    <h4 class="card-title fw-bold text-start">Smoked Sausage Delight</h4>
+                    <p class="card-text text-muted">Spiced premium smoked beef sausage slices, caramelized onions, green peppers, and a double blanket of rich mozzarella cheese.</p>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mt-3">
+                    <span class="fs-4 fw-bold text-warm-red">$14</span>
+                    <button class="btn btn-pizza px-4 rounded-pill"><i class="fas fa-shopping-basket me-2"></i>Order Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container my-5 py-4">
+    <div class="row align-items-center g-5">
+      <div class="col-md-6">
+        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=600" class="img-fluid rounded-4 shadow" alt="Our Kitchen">
+      </div>
+      <div class="col-md-6">
+        <h3 class="fw-bold text-warm-red mb-3">Our Culinary Heritage</h3>
+        <p class="lead">Established with a definitive mission to redefine the pizza dining experience, Al-Abdsawi brings together master baking skills, custom secret sauce blends, and an atmosphere full of warmth.</p>
+        <p>We pride ourselves on choosing zero artificial additives, hand-picking fresh daily produce, and treating every single visitor as a cherished family guest in our cozy dining lounge.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="bg-warm-red text-white text-center pt-5 pb-4">
+    <div class="container">
+      <h3 class="fw-bold mb-4">Visit Al-Abdsawi Today</h3>
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-4">
+          <p class="mb-2"><i class="fas fa-envelope me-2"></i>hadeelsafi80@gmail.com</p>
+          <p class="mb-0"><i class="fas fa-phone-alt me-2"></i>+972 597 134 280</p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center gap-3 mb-4">
+        <a href="https://www.instagram.com/had2el_safi" target="_blank" class="text-white fs-3 mx-2"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/972597134280" target="_blank" class="text-white fs-3 mx-2"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://github.com/hadeelsafi" target="_blank" class="text-white fs-3 mx-2"><i class="fab fa-github"></i></a>
+      </div>
+      <hr class="bg-white opacity-25 max-width-600 mx-auto">
+      <p class="small mb-0 mt-3">&copy; 2026 Al-Abdsawi Pizza Lounge. Crafted beautifully using Bootstrap 5.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

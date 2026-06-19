@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <style>
-    /* لوحة الألوان الدافئة والمتناسقة الخاصة بمطعم العبدساوي */
     :root {
       --warm-red: #b85042;
       --cheese-yellow: #fcebb6;
@@ -23,7 +22,6 @@
       overflow-x: hidden;
     }
 
-    /* تنسيق الهيدر (Navbar) الثابت ومنع الشفافية والتداخل */
     .navbar {
       position: sticky !important;
       top: 0;
@@ -31,8 +29,8 @@
       background-color: var(--warm-red) !important;
       opacity: 1 !important;
       backdrop-filter: none !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important; /* ظل يفصل الهيدر عن الكاروسيل */
-      z-index: 9999 !important; /* يضمن ظهور الهيدر فوق الصور دائمًا */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important; 
+      z-index: 9999 !important; 
       padding: 15px 0;
     }
 
@@ -48,7 +46,6 @@
       background-color: var(--cheese-yellow) !important;
     }
 
-    /* تنسيق أزرار الطلب */
     .btn-pizza {
       background-color: var(--warm-red);
       color: white;
@@ -63,13 +60,11 @@
       transform: translateY(-2px);
     }
 
-    /* ضبط حجم عارض الصور (Carousel) */
     .carousel-item img {
       height: 60vh;
       object-fit: cover;
     }
 
-    /* تنسيق بطاقات البيتزا الأفقية لراحة العين ومنع انضغاط النصوص */
     .pizza-card-custom {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: none;
@@ -81,7 +76,6 @@
       box-shadow: 0 15px 30px rgba(62, 39, 35, 0.15) !important;
     }
 
-    /* حاوية الصورة لضمان ملاءمتها هندسيًا دون تشويه */
     .pizza-card-custom .img-container {
       overflow: hidden;
       position: relative;
@@ -108,7 +102,6 @@
       text-align: justify;
     }
 
-    /* شاشات الجوال والأجهزة اللوحية */
     @media (max-width: 767px) {
       .pizza-card-custom .img-container {
         height: 200px;
@@ -301,7 +294,7 @@
         <a href="https://github.com/hadeelsafi" target="_blank" class="text-white fs-3 mx-2"><i class="fab fa-github"></i></a>
       </div>
       <hr class="bg-white opacity-25 max-width-600 mx-auto">
-      <p class="small mb-0 mt-3">&copy; 2026 Al-Abdsawi Pizza Lounge. Crafted beautifully using Bootstrap 5.</p>
+      <p class="small mb-0 mt-3">&copy; 2026 Al-Abdsawi Pizza Lounge.</p>
     </div>
   </footer>
 
